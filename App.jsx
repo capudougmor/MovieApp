@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import Icon from '@expo/vector-icons/MaterialIcons'
 
-import { GlobalStyles } from './src/styles/GlobalStyles'
-import { Container, Content, Img } from './src/styles/Styles'
-
+import { Container, Content, Back, Img, ViewSearch, Input, Title, Button, SlideView } from './src/styles/Styles'
+import { StatusBar } from 'react-native';
 
 
 export default function MovieApp() {
@@ -47,18 +46,34 @@ export default function MovieApp() {
     },
   ]);
 
-  const [background, setBackgrounf] = useState(lista[0].release)
+  const [background, setBackgrounf] = useState(lista[0].img)
 
   return (
+    
     <Container>
+      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
       <Content>
-        <View>
-          <Img style={{...StyleSheet.absoluteFill, backgroundColor: '#000'}}
-            source={{ uri: background }}
+        <Back >
+          <Img
+            source={{ uri: 'https://sujeitoprogramador.com/wp-content/uploads/2020/05/background.jpg'}}
+            blurRadius={8}
           >
+            <ViewSearch>
+              <Input 
+                placeholder="Procurando algo"
+              />
+              <Button>
+                <Icon name="search" color="#000" size={25} />
+              </Button>
+            </ViewSearch>
 
+            <Title>Acabou de chegar</Title>
+
+            <SlideView>
+
+            </SlideView>
           </Img>
-        </View>
+        </Back>
       </Content>
     </Container>
   );
