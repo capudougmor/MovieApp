@@ -1,22 +1,19 @@
 import React, { useState, useRef } from 'react';
-import { StatusBar, Button, StyleSheet, View } from 'react-native';
+import { StatusBar, Button, StyleSheet, View, FlatList } from 'react-native';
 import Icon from '@expo/vector-icons/MaterialIcons'
-import Carousel from 'react-native-snap-carousel'
-
 
 import {
   Container,
   Content,
   Back,
   Img,
-  IconButton, ViewSearch, Input, Title, SlideView,
+  IconButton, ViewSearch, Input, Title, SlideView, MovieImage
 
 } from './src/styles/Styles'
 import movies from './src/assets/movies.js'
 
 
 export default function MovieApp() {
-  const carouselRef = useRef(null)
 
   const [lista, setLista] = useState(movies);
   const [background, setBackground] = useState(lista[0].img)
@@ -26,8 +23,11 @@ export default function MovieApp() {
   }
   const _renderItem = ({ item }) => {
     return (
-      <View>
-
+      <View 
+      >
+        <MovieImage
+          source={{uri: item.img}}
+          />
       </View>
     )
   }
@@ -36,28 +36,30 @@ export default function MovieApp() {
       <Img
         source={{ uri: background }}
         blurRadius={8}
-      >
+        >
         <ViewSearch>
           <Input
             placeholder="Procurando algo"
-          />
+            />
           <IconButton>
             <Icon name="search" color="#000" size={25} />
           </IconButton>
         </ViewSearch>
 
         <Title>Acabou de chegar</Title>
-          <View style={styles.carousel} >
-          <Carousel
+          <View >
+          <FlatList
+            style={styles.carouselArea}
+            showsHorizontalScrollIndicator={false}
             data={lista}
-            layout="tinder"
-            layoutCardOffset={9}
-            ref={isCarousel}
+            // horizontal
+            scrollEnabled={true}
+            keyExtractor={(item) => item.title}
+            contentContainerStyle={{
+              alignItems: 'center',
+            }}
             renderItem={_renderItem}
-            sliderWidth={300}
-            itemWidth={300}
-            inactiveSlideShift={0}
-            useScrollView={true}
+            snapToInterval={'40'}
           />
         </View>
         <Button title="teste" onPress={handleTest} />
@@ -67,7 +69,7 @@ export default function MovieApp() {
 }
 
 const styles = StyleSheet.create({
-  carousel: {
-
+  carouselArea: {
+    maxHeight:400,
   }
 })

@@ -50,7 +50,11 @@ export const SlideView  = styled.View`
   justify-content: center;
   align-items: center;
 `
-  
 
+export const MovieImage  = styled.Image`
+  width: 200px;
+  height: 400px;
 
-
+  margin: 40px;
+  border-radius: 10px;
+`
