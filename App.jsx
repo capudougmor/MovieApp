@@ -27,6 +27,7 @@ export default function MovieApp() {
       >
         <MovieImage
           source={{uri: item.img}}
+          resizeMode="contain"
           />
       </View>
     )
@@ -52,14 +53,13 @@ export default function MovieApp() {
             style={styles.carouselArea}
             showsHorizontalScrollIndicator={false}
             data={lista}
-            // horizontal
+            horizontal
             scrollEnabled={true}
             keyExtractor={(item) => item.title}
             contentContainerStyle={{
               alignItems: 'center',
             }}
             renderItem={_renderItem}
-            snapToInterval={'40'}
           />
         </View>
         <Button title="teste" onPress={handleTest} />
@@ -71,5 +71,6 @@ export default function MovieApp() {
 const styles = StyleSheet.create({
   carouselArea: {
     maxHeight:400,
+    maxWidth: 300,
   }
 })
