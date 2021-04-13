@@ -1,20 +1,10 @@
 import styled from 'styled-components/native'
 
-import { Dimensions } from 'react-native'
-
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window')
-
-export const Container  = styled.ScrollView`
-  flex: 1;
-`
-
 export const Content  = styled.View`
   flex: 1;
-  height: ${screenHeight}px;
 `
 
 export const Back  = styled.View`
-  flex: 1;
   background-color: #000;
 `
 
@@ -22,7 +12,6 @@ export const Img  = styled.ImageBackground`
   flex: 1;
   width: null;
   height: null;
-  opacity: 1;
   justify-content: flex-start;
   background-color: #000;
 `
@@ -47,11 +36,11 @@ export const Title  = styled.Text`
   width: 95%;
   font-size: 26px;
   font-weight: 600;
-  color: #fff;
+  color: #000;
   align-self: center;
 `
 
-export const Button  = styled.TouchableOpacity`
+export const IconButton  = styled.TouchableOpacity`
 
 `
 
@@ -60,9 +49,8 @@ export const SlideView  = styled.View`
   height: 350px;
   justify-content: center;
   align-items: center;
-
 `
-
+  
 
 
 
